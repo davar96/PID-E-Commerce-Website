@@ -5,6 +5,7 @@
         "Ajouter",
         "Bientôt",
         "Catégories",
+        "commande",
         "commandes",
         "confidentialité",
         "Connexion",
@@ -17,6 +18,7 @@
         "Enregistrer",
         "Garantie",
         "générales",
+        "Gratuite",
         "Historique",
         "Isotop",
         "jours",
@@ -24,6 +26,7 @@
         "Livreur",
         "Nouveautés",
         "Nouvelles",
+        "oldval",
         "Politique",
         "privé",
         "Produits",
@@ -40,6 +43,7 @@
         "Vendu",
         "vendus",
         "vente",
+        "Votre",
         "Vous"
     ]
 }
