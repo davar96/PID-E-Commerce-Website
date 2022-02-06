@@ -22,6 +22,10 @@
     <!-- Custom CSS File -->
     <link rel="stylesheet" href="style.css">
 
+    <?php
+    // Require Functions.php file
+    require('functions.php');
+    ?>
 </head>
 
 <body>
