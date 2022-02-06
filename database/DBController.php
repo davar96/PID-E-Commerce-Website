@@ -17,7 +17,20 @@ class DBController{
             echo"Echec".$this->con->connect_error;
         }
 
-        // echo 'Connexion Etablie !';
+        // echo 'Connexion Etablie !'; 
+    }
+
+    // Will close the connection when object is not used
+    public function __destruct(){
+        $this->closeConnection();
+    }
+
+    // MySql Closing Connection
+    protected function closeConnection(){
+        if ($this->con != null) {
+           $this->con->close();
+           $this->con = null;
+        }
     }
 }
 
