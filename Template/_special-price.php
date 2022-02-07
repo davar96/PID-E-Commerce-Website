@@ -4,6 +4,7 @@
     $unique = array_unique($brand);
     sort($unique);
     //  print_r($brand);
+    shuffle($product_shuffle);
 ?>
 <section id="special-price">
             <div class="container">
