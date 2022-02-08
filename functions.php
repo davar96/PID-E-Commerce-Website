@@ -13,8 +13,8 @@
 
     // Product object
     $product = new Product($db);
-
     // print_r($product->getData());
+    $product_shuffle = $product->getData();
 
     // cart object
 
