@@ -44,9 +44,9 @@
                                 <!-- Product quantity start -->
                                 <div class="qty d-flex pt-2">
                                     <div class="d-flex font-rale w-25">
-                                        <button class="qty-up border bg-light" data-id="pro1"><i class="fas fa-angle-up"></i></button>
-                                        <input type="text" data-id="pro1" class="qty-input border px-2 w-100 bg-light" disabled value="1" placeholder="1">
-                                        <button data-id="pro1" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
+                                        <button class="qty-up border bg-light" data-id="<?php echo $item['item_id'] ?? '0'; ?>"><i class="fas fa-angle-up"></i></button>
+                                        <input type="text" data-id="<?php echo $item['item_id'] ?? '0'; ?>" class="qty-input border px-2 w-100 bg-light" disabled value="1" placeholder="1">
+                                        <button data-id="<?php echo $item['item_id'] ?? '0'; ?>" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
                                     </div>
 
                                     <form method="post">
@@ -62,7 +62,7 @@
 
                             <div class="col-sm-2 text-right">
                                 <div class="font-size-20 text-danger font-baloo">
-                                    <span class="product-price"><?php echo $item['item_price'] ?? '0' ?> €</span>
+                                    <span class="product-price" data-id="<?php echo $item['item_id'] ?? '0'; ?>"><?php echo $item['item_price'] ?? '0' ?> €</span>
                                 </div>
                             </div>
                             <!-- Cart item end -->
