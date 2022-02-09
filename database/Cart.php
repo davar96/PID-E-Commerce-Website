@@ -38,9 +38,20 @@ class Cart{
             // insert data into cart
             $result = $this->insertIntoCart($params);
             if ($result) {
-                // relouad page
+                // reload page
                 header("Location:" . $_SERVER['PHP_SELF']);
             }
+        }
+    }
+
+    // calculate sub total
+    public function getSum($arr){
+        if(isset($arr)){
+            $sum = 0;
+            foreach($arr as $item){
+                $sum += floatval($item[0]);
+            }
+            return sprintf('%.2f', $sum);
         }
     }
 
