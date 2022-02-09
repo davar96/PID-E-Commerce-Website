@@ -13,6 +13,8 @@
         $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
         }
     }
+
+    $in_cart = ($Cart->getCartId($product->getData('cart')));
 ?>
 <section id="special-price">
             <div class="container">
@@ -30,7 +32,7 @@
                 </div>
 
                 <div class="grid">
-                    <?php array_map(function($item){?>
+                    <?php array_map(function($item) use($in_cart) {?>
                     <div class="grid-item border <?php echo $item['item_brand']??"Erreur";?>">
                         <div class="item py-2" style="width: 200px;">
                             <div class="product font-rale">
@@ -52,9 +54,14 @@
                                     <form method="post">
                                     <input type="hidden" name="item_id" value="<?php echo $item['item_id']?? '2';?>">
                                     <input type="hidden" name="user_id" value="<?php echo '2';?>">
-                                <button type="submit" name="special_price_submit" class="btn btn-warning font-size-12">
-                                    Ajouter au panier
-                                </button>
+                                    <?php 
+                                    if (in_array($item['item_id'], $in_cart ?? [])) {
+                                        echo '<button type="submit" disabled class="btn btn-success font-size-12">Dans le panier</button>';
+                                    } else {
+                                        echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-12">Ajouter au panier</button>';
+                                    }
+                                    
+                                    ?>
                                 </form>
                                 </div>
                             </div>
