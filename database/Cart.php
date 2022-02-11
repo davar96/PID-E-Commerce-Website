@@ -9,7 +9,6 @@ class Cart{
     }
 
     // insert into cart table
-
     public function insertIntoCart($params = null, $table = "cart"){
         if($this->db->con != null){
             if($params != null){
