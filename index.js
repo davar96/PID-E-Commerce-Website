@@ -126,9 +126,9 @@ $(document).ready(function() {
                 let obj = JSON.parse(result);
                 let item_price = obj[0]['item_price'];
 
-                if ($input.val() >= 1 && $input.val() <= 9) {
+                if ($input.val() >= 1 && $input.val() <= 10) {
                     $input.val(function(i, oldval) {
-                        return ++oldval;
+                        return --oldval;
                     });
 
                     // increase price of the product
