@@ -3,6 +3,8 @@
         "Connexion",
         "Erreur",
         "Etablie",
+        "itemid",
+        "oldval",
         "Votre"
     ]
 }

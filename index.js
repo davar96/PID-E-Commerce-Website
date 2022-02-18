@@ -83,7 +83,7 @@ $(document).ready(function() {
     // Click on quantity up button
     $qty_up.click(function(e) {
 
-        let $input = $(`.qty-input[data-id='${$(this).data('id')}']`);
+        let $input = $(`.qty_input[data-id='${$(this).data('id')}']`);
         let $price = $(`.product_price[data-id='${$(this).data('id')}']`);
 
         // change product price using ajax call
@@ -95,7 +95,7 @@ $(document).ready(function() {
                 let obj = JSON.parse(result);
                 let item_price = obj[0]['item_price'];
 
-                if ($input.val() >= 1 && $input.val() <= 9) {
+                if ($input.val() >= 1 && $input.val() <= 10) {
                     $input.val(function(i, oldval) {
                         return ++oldval;
                     });
@@ -113,7 +113,7 @@ $(document).ready(function() {
 
     // Click on quantity down button
     $qty_down.click(function(e) {
-        let $input = $(`.qty-input[data-id='${$(this).data('id')}']`);
+        let $input = $(`.qty_input[data-id='${$(this).data('id')}']`);
         let $price = $(`.product_price[data-id='${$(this).data('id')}']`);
 
 
@@ -126,7 +126,7 @@ $(document).ready(function() {
                 let obj = JSON.parse(result);
                 let item_price = obj[0]['item_price'];
 
-                if ($input.val() >= 1 && $input.val() <= 10) {
+                if ($input.val() > 1 && $input.val() <= 10) {
                     $input.val(function(i, oldval) {
                         return --oldval;
                     });
@@ -137,6 +137,8 @@ $(document).ready(function() {
                     //set subTotal price
                     let subTotal = parseInt($deal_price.text()) - parseInt(item_price);
                     $deal_price.text(subTotal.toFixed(2));
+
+
                 }
             }
         }); //closing ajax request
