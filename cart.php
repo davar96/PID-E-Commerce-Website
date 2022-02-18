@@ -6,11 +6,11 @@
 
 <?php
 
-// Include cart-template file
-include('Template/_cart-template.php');
+// Include cart items if it is not empty
+count($product->getData('cart')) ? include('Template/_cart-template.php') : include('Template/notFound/_cart_notFound.php');
 
-// Include wishlist-template file
-include('Template/_wishlist_template.php');
+// Include wishlist items if it is not empty
+count($product->getData('wishlist')) ? include('Template/_wishlist_template.php') : include('Template/notFound/_wishlist_notFound.php');
 
 // Include new-phone-section file
 include('Template/_new-phones.php');
