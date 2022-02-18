@@ -5,20 +5,19 @@
        $deletedRecord = $Cart->deleteCart($_POST['item_id']);
      }
 
-     //save For Later
-     if(isset($_POST['wishlist-submit'])){
-         $Cart->sendToWishlist($_POST['item_id']);
+     if(isset($_POST['cart-submit'])){
+         $Cart->sendToWishlist($_POST['item_id'], 'cart', 'wishlist');
      }
  }
  ?>
  <section id="cart" class="py-3 mb-5">
             <div class="container-fluid w-75">
-                <h5 class="font-baloo font-size-20">Votre panier</h5>
+                <h5 class="font-baloo font-size-20">Liste d'envies</h5>
                 <!-- Shopping cart items start -->
                 <div class="row">
                     <div class="col-sm-9">
                         <?php 
-                            foreach($product->getData('cart') as $item) :
+                            foreach($product->getData('wishlist') as $item) :
                             // print_r ($item);
                             $cart = $product->getProduct($item ['item_id']);
                             //  print_r($cart);
@@ -47,22 +46,17 @@
 
                                 <!-- Product quantity start -->
                                 <div class="qty d-flex pt-2">
-                                    <div class="d-flex font-rale w-25">
-                                        <button class="qty-up border bg-light" data-id="<?php echo $item['item_id'] ?? '0'; ?>"><i class="fas fa-angle-up"></i></button>
-                                        <input type="text" data-id="<?php echo $item['item_id'] ?? '0'; ?>" class="qty-input border px-2 w-100 bg-light" disabled value="1" placeholder="1">
-                                        <button data-id="<?php echo $item['item_id'] ?? '0'; ?>" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
-                                    </div>
+                                    <form method="post">
+                                    <input type="hidden" value="<?php echo $item['item_id']?? 0; ?>" name="item_id">    
+                                    <button type="submit" name="delete-cart-submit" class="btn font-baloo text-danger pl-0 pr-3 border-right">Supprimer</button>
+                                    </form>
 
                                     <form method="post">
                                     <input type="hidden" value="<?php echo $item['item_id']?? 0; ?>" name="item_id">    
-                                    <button type="submit" name="delete-cart-submit" class="btn font-baloo text-danger px-3 border-right">Supprimer</button>
+                                    <button type="submit" name="cart-submit" class="btn font-baloo text-danger">Ajouter au panier</button>
                                     </form>
                                    
-                                    <form method="post">
-                                    <input type="hidden" value="<?php echo $item['item_id']?? 0; ?>" name="item_id">    
-                                    <button type="submit" name="wishlist-submit" class="btn font-baloo text-danger">Ajouter à la liste d'envies</button>
-                                    </form>
-                                    
+                                   
                                 </div>
                                 <!-- Product quantity end -->
 
@@ -82,18 +76,6 @@
                             // print_r($subTotal);
                         ?>
                     </div>
-                    <!-- Subtotal section start -->
-                    <div class="col-sm-3">
-                        <div class="sub-total border text-center mt-2">
-                            <h6 class="font-size-12 font-rale text-success py-3"><i class="fas fa-check"></i> Livraison Gratuite</h6>
-                            <div class="border-top py-4">
-                                <h5 class="font-baloo font-size-20">Total (<?php echo isset($subTotal) ? count($subTotal): 0; ?> articles); <span class="text-danger">€<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $Cart->getSum($subTotal): 0; ?></span></span>
-                                </h5>
-                                <button type="submit" class="btn btn-warning mt-3">Passer la commande</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Subtotal section end -->
                 </div>
                 <!-- Shopping cart items start -->
             </div>

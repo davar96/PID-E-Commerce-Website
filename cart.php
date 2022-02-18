@@ -9,6 +9,9 @@
 // Include cart-template file
 include('Template/_cart-template.php');
 
+// Include wishlist-template file
+include('Template/_wishlist_template.php');
+
 // Include new-phone-section file
 include('Template/_new-phones.php');
 
