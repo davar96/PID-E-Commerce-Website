@@ -11,12 +11,17 @@
                     <div class="col-sm-6">
                         <img src="<?php echo $item['item_image']??"/assets/imageNotFound.jpg";?>" alt="image" class="img-fluid">
                         <div class="form-row pt-4 font-size-16 font-baloo">
-                            <div class="col">
-                                <button type="submit" class="btn btn-danger form-control">Acheter</button>
-                            </div>
 
                             <div class="col">
-                                <button type="submit" class="btn btn-warning form-control">Ajouter au panier</button>
+                            <?php 
+                                    if (in_array($item['item_id'], ($Cart->getCartId($product->getData('cart')) ?? []))) {
+                                        echo '<button type="submit" disabled class="btn btn-success font-size-16 form-control">Dans le panier</button>';
+                                    } else {
+                                        echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-16 form-control">Ajouter au panier</button>';
+                                    }
+                                    
+                                    ?>
+                      
                             </div>
                         </div>
                     </div>
