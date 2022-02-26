@@ -44,7 +44,6 @@
                     </div>
                 </div>
 
-
             </div>
         </div>
     </footer>
@@ -65,6 +64,7 @@
 
     <!-- My JS File Link -->
     <script src="./index.js"></script>
+
 </body>
 
 </html>
