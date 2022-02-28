@@ -16,8 +16,6 @@ class DBController{
         if($this->con->connect_error){
             echo"Echec".$this->con->connect_error;
         }
-
-        // echo 'Connexion Etablie !'; 
     }
 
     // Will close the connection when object is not used

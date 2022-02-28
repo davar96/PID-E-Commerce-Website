@@ -1,3 +1,10 @@
+<?php 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        require('register-process.php');
+    }
+
+?>
+
 <!-- registration start -->
 <section id="register">
     <div class="row m-0">
@@ -23,18 +30,18 @@
                     <div class="form-row">
 
                         <div class="col">
-                            <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Prénom">
+                            <input type="text" value="<?php if(isset($_POST['firstName'])) echo $_POST['firstName']; ?>" name="firstName" id="firstName" class="form-control" placeholder="Prénom">
                         </div>
 
                         <div class="col">
-                            <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Nom">
+                            <input type="text" value="<?php if(isset($_POST['lastName'])) echo $_POST['lastName']; ?>" name="lastName" id="lastName" class="form-control" placeholder="Nom">
                         </div>
 
                     </div>
 
                     <div class="form-row my-4">
                         <div class="col">
-                            <input type="email" required name="email" id="email" class="form-control" placeholder="Email*">
+                            <input type="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" required name="email" id="email" class="form-control" placeholder="Email*">
                         </div>
                     </div>
 
