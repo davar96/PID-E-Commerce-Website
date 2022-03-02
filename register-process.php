@@ -20,6 +20,30 @@ function validate_input_email($emailValue) {
     return'';
 }
 
+//profileImage
+function upload_profile($path, $file){
+    $targetDir = $path;
+    $default = "./assets/default-profile.png";
+
+    //get the filename
+    $filename = basename($file['name']);
+    $targetFilePath = $targetDir.$filename;
+    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+    if(!empty($filename)){
+        //allow specific file types
+        $allowType = array('png', 'jpg', 'jpeg', 'gif', 'pdf');
+        if(in_array($fileType, $allowType)){
+            //upload file to db
+            if(move_uploaded_file($file['tmp_name'], $targetFilePath)){
+                return $targetFilePath;
+            }
+        }
+    }
+    //return default image
+    return $path .$default;
+}
+
 $error = array();
 
 $firstName = validate_input_text($_POST['firstName']);
@@ -47,12 +71,14 @@ if(empty($confirm_pwd)){
     $error[] = "Vous avez oublié(e) de confirmer votre MDP";
 }
 
-$profileImage='image';
+$files = $_FILES['profileUpload'];
+
+$profileImage = upload_profile('./assets/profile/', $files);
 
 if(empty($error)){
     //register a new user
     $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
-    require('database\mysqlconnection.php');
+    require('database\RegisterDBController.php');
 
     //make a query
     $query = "INSERT INTO user(user_id, first_name, last_name, email, password, profile_image, register_date )";
@@ -71,13 +97,13 @@ if(empty($error)){
     mysqli_stmt_execute($q);
 
     if(mysqli_stmt_affected_rows($q)==1){
-        print "record successfully inserted";
+        header('Location:cart.php');
     }else{
         print "record failed to insert";
     }
 
-}else{
-    echo 'not validate';
-}
+    }else{
+        echo 'not validate';
+    }
 
 ?>

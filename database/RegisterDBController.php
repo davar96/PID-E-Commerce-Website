@@ -16,7 +16,7 @@ try{
 
 
 }catch (Exception $ex){
-    print "An Exception occurred. Message: " . $ex->getMessage();
+    print "Une erreur s'est produite. Message: " . $ex->getMessage();
 } catch (Error $e){
-    print "The system is busy please try later";
+    print "Veuillez réessayer ultérieurement";
 }

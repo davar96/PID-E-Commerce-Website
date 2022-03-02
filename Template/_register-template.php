@@ -11,17 +11,17 @@
        <div class="col-lg-4 offset-lg-2">
             <div class="text-center pb-5">
                 <h1 class="login-title text-dark">Enregistrement</h1>
-                <p class="p-1 m-0 font-baloo text-black-50">Register and enjoy additional features</p>
+                <p class="p-1 m-0 font-baloo text-black-50">Enregistrez vous pour pouvoir ajouter des articles a votre panier</p>
                 <span class="font-baloo text-black-50">J'ai déjà un <a href="login.php">compte</a></span>
             </div>
             <div class="upload-profile-image d-flex justify-content-center pb-5">
                 <div class="text-center">
                     <div class="d-flex justify-content-center">
-                        <img class="camera-icon" src="./assets/imageNotFound.jpg" alt="camera">
+                        <img class="camera-icon" src="./assets/camera-solid.svg" alt="camera">
                     </div>
-                    <img src="./assets/imageNotFound.jpg" style="width: 200px; height: 200px;" class="img rounded-circle" alt="profile">
+                    <img src="./assets/default-profile.png" style="width: 200px; height: 200px;" class="img rounded-circle" alt="profile">
                     <small class="form-text text-black-50">Choisissez une image</small>
-                    <input type="file" class="form-control-file" name="profileUpload" id="upload-profile">
+                    <input type="file" form="reg-form" class="form-control-file" name="profileUpload" id="upload-profile">
                 </div>
             </div>
             <div class="d-flex justify-content-center">
