@@ -57,10 +57,15 @@ button:focus {
     background: "#FFD289";
 }
 
-#register {
+#register,
+#login-form {
     padding: 5% 0;
     background: url("assets/background.png") no-repeat;
     background-size: cover;
+}
+
+#login-form {
+    padding: 10% 0;
 }
 
 #register .upload-profile-image {
@@ -110,7 +115,10 @@ button:focus {
 
 #reg-form input[type='text'],
 #reg-form input[type='email'],
-#reg-form input[type='password'] {
+#reg-form input[type='password'],
+#log-form input[type='text'],
+#log-form input[type='email'],
+#log-form input[type='password'] {
     border: none;
     border-radius: unset;
     border-bottom: 1px solid;
