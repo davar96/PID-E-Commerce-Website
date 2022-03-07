@@ -44,20 +44,12 @@
 
                         <!-- Product price start -->
                         <table class="my-3">
-                            <tr class="font-rale font-size-14">
-                                <td>P.D.S.F.</td>
-                                <td><strike>1046.00€</strike></td>
-                            </tr>
 
                             <tr class="font-rale font-size-14">
                                 <td>Notre prix</td>
                                 <td class="font-size-20 text-danger"><span><?php echo $item['item_price']?? '0';?> €</span><small class="text-dark font-size-12">&nbsp;&nbsp;TVAC</small></td>
                             </tr>
 
-                            <tr class="font-rale font-size-14">
-                                <td>Vous économisez</td>
-                                <td><span class="font-size-16 text-danger">200.00€</span> </td>
-                            </tr>
                         </table>
                         <!-- Product price end -->
 
@@ -96,65 +88,10 @@
                         </div>
                         <!-- Order details end -->
 
-                        <div class="row">
-                            <div class="col-6">
-                                <!-- Color start -->
-                                <div class="color my-3">
-                                    <div class="d-flex justify-content-between">
-                                        <h6 class="font-baloo">Couleur: </h6>
-                                        <div class="p-2 color-yellow-bg rounded-circle">
-                                            <button class="btn font-size-14"></button>
-                                        </div>
-
-                                        <div class="p-2 color-primery-bg rounded-circle">
-                                            <button class="btn font-size-14"></button>
-                                        </div>
-
-                                        <div class="p-2 color-second-bg rounded-circle">
-                                            <button class="btn font-size-14"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Color end -->
-                            </div>
-
-                            <div class="col-6">
-                                <!-- Product quantity section start -->
-                                <div class="qty d-flex">
-                                    <h6 class="font-baloo">Quantité: </h6>
-                                    <div class="px-4 d-flex font-rale">
-                                        <button class="qty-up border bg-light" data-id="pro1"><i class="fas fa-angle-up"></i></button>
-                                        <input type="text" data-id="pro1" class="qty-input border px-2 w-50 bg-light" disabled value="1" placeholder="1">
-                                        <button data-id="pro1" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
-                                    </div>
-                                </div>
-                                <!-- Product quantity section end -->
-                            </div>
-                        </div>
-
-                        <!-- Memory start -->
-                        <div class="ram my-3">
-                            <h6 class="font-baloo">RAM:</h6>
-                            <div class="d-flex justify-content-between w-75">
-                                <div class="font-rubik border p-2">
-                                    <button class="btn p-0 font-size-14">4GB</button>
-                                </div>
-
-                                <div class="font-rubik border p-2">
-                                    <button class="btn p-0 font-size-14">6GB</button>
-                                </div>
-
-                                <div class="font-rubik border p-2">
-                                    <button class="btn p-0 font-size-14">8GB</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Memory end -->
-
-
                     </div>
 
                     <div class="col-12">
+                        <br>
                         <h6 class="font-rubik">Description</h6>
                         <hr>
                         <p class="font-rale font-size-14">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim velit reprehenderit deserunt voluptatibus nihil. Provident consequatur error voluptatum id laudantium sunt eius voluptatibus dicta ipsum aliquam nisi minima modi temporibus,

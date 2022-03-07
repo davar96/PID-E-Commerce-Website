@@ -1,7 +1,7 @@
  <!-- OwlCarousel start -->
  <section id="banner-area">
 
-<div class="owl-carousel owl-theme">
+<div class="owl-carousel owl-theme img-fluid">
 
     <div class="item width=500px height=500px">
         <img src="assets/s21ultraBanner.jpg" alt="image1">
