@@ -33,10 +33,9 @@
     <!-- Header start -->
     <header id="header">
         <div class="strip d-flex justify-content-between px-4 py-1 bg-light">
-            <p class="font-rale font-size-12 text-black-50 m-0">David Arustamyan EICE</p>
+            <p class="font-rale font-size-12 text-black-50 m-0"><?php echo isset($user['first_name']) ? $user['first_name']: ''; ?></p>
             <div class="font-rale font-size-14">
-                <a href="#" class="px-3 border-right border-left text-dark">Connexion</a>
-                <a href="#" class="px-3 border-right border-left text-dark">Liste d'envies</a>
+                <a href="login.php" class="px-3 border-right border-left text-dark">Connexion</a>
             </div>
         </div>
 
@@ -51,27 +50,19 @@
                     <ul class="navbar-nav m-auto font-rubik">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">En vente</a>
+                            <a class="nav-link active" aria-current="page" href="#">Les plus vendus</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Catégories</a>
+                            <a class="nav-link" href="#">Smartphones</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Produits<i class="fas fa-chevron-down"></i></a>
+                            <a class="nav-link" href="#">Les Nouveautés</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nouvelles</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Catégories<i class="fas fa-chevron-down"></i></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Bientôt disponible</a>
+                            <a class="nav-link" href="#">News</a>
                         </li>
 
                     </ul>

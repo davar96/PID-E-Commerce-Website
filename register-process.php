@@ -1,49 +1,5 @@
 <?php 
 
-function validate_input_text($textValue) {
-    if(!empty($textValue)) {
-        $trim_text = trim($textValue);
-        //removes illegal characters
-        $sanitize_str = filter_var($trim_text, FILTER_SANITIZE_STRING);
-        return $sanitize_str;
-    }
-    return'';
-}
-
-function validate_input_email($emailValue) {
-    if(!empty($emailValue)) {
-        $trim_text = trim($emailValue);
-        //removes illegal characters
-        $sanitize_str = filter_var($trim_text, FILTER_SANITIZE_EMAIL);
-        return $sanitize_str;
-    }
-    return'';
-}
-
-//profileImage
-function upload_profile($path, $file){
-    $targetDir = $path;
-    $default = "./assets/default-profile.png";
-
-    //get the filename
-    $filename = basename($file['name']);
-    $targetFilePath = $targetDir.$filename;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-    if(!empty($filename)){
-        //allow specific file types
-        $allowType = array('png', 'jpg', 'jpeg', 'gif', 'pdf');
-        if(in_array($fileType, $allowType)){
-            //upload file to db
-            if(move_uploaded_file($file['tmp_name'], $targetFilePath)){
-                return $targetFilePath;
-            }
-        }
-    }
-    //return default image
-    return $path .$default;
-}
-
 $error = array();
 
 $firstName = validate_input_text($_POST['firstName']);
@@ -97,7 +53,13 @@ if(empty($error)){
     mysqli_stmt_execute($q);
 
     if(mysqli_stmt_affected_rows($q)==1){
-        header('Location:cart.php');
+        //start new session
+        session_start();
+
+        //create session variable
+        $_SESSION['user_id'] = mysqli_insert_id($con);
+
+        header('Location:login.php');
     }else{
         print "record failed to insert";
     }

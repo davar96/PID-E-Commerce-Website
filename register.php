@@ -29,6 +29,13 @@
 </head>
 
 <body>
+
+<?php 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        require('register-process.php');
+    }
+
+?>
   <!-- Main start -->
   <main class="main-site">
 

@@ -22,18 +22,33 @@
     <link rel="stylesheet" href="style.css">
 
     <?php
+
+    session_start();
     // Require Functions.php file
     require('functions.php');
     ?>
     
 </head>
 
+<?php 
+    $user =array();
+    require('database/RegisterDBController.php');
+
+    if(isset($_SESSION['user_id'])){
+        $user = get_user_info($con, $_SESSION['user_id']);
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        require('login-process.php');
+    }
+?>
+
 <body>
   <!-- Main start -->
   <main class="main-site">
 
-<!-- registration start -->
-<section id="register">
+<!-- authentification start -->
+<section id="login-form">
     <div class="row m-0">
        <div class="col-lg-4 offset-lg-2">
             <div class="text-center pb-5">
@@ -43,7 +58,7 @@
             </div>
             <div class="upload-profile-image d-flex justify-content-center pb-5">
                 <div class="text-center">
-                <img src="./assets/default-profile.png" style="width: 200px; height: 200px;" class="img rounded-circle" alt="profile">
+                <img src="<?php echo isset($user['profile_image']) ? $user['profile_image']:'./assets/default-profile.png'; ?>" style="width: 200px; height: 200px;" class="img rounded-circle" alt="profile">
                 </div>
             </div>
             <div class="d-flex justify-content-center">
@@ -70,7 +85,7 @@
         </div>
     </div>
 </section>
-<!-- registration end -->
+<!-- authentification end -->
 
 
     <?php

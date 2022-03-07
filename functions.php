@@ -8,6 +8,9 @@
      // Require Cart class
      require('database/Cart.php');
 
+     // Require Cart class
+     require('database/Register.php');
+
     // DBController Object
     $db = new DBController();
 
@@ -17,4 +20,6 @@
 
     // cart object
     $Cart = new Cart($db);
+
+    
 ?>
