@@ -1,5 +1,3 @@
-<!-- New phones start -->
-
 <?php
     shuffle($product_shuffle);
 
@@ -11,6 +9,8 @@
         }
     }
  ?>
+ 
+ <!-- New phones start -->
 <section id="new-phones">
             <div class="container">
                 <h4 class="font-rubik font-size-20">Les Nouveautés</h4>

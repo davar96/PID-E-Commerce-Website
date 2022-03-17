@@ -22,6 +22,7 @@ ob_start();
 
      // Include news file
      include('Template/_news.php');
+     
 ?>
 
 <?php

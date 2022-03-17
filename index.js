@@ -3,14 +3,15 @@ $(document).ready(function(e) {
     // banner owl carousel
     $("#banner-area .owl-carousel").owlCarousel({
         dots: true,
+        loop: true,
         items: 1
     });
 
     // top sale owl carousel
     $("#top-sale .owl-carousel").owlCarousel({
         loop: true,
-        nav: true,
-        dots: false,
+        nav: false,
+        dots: true,
         responsive: {
             0: {
                 items: 1
@@ -90,7 +91,7 @@ $(document).ready(function(e) {
                 let obj = JSON.parse(result);
                 let item_price = obj[0]['item_price'];
 
-                if ($input.val() >= 1 && $input.val() <= 10) {
+                if ($input.val() >= 1 && $input.val() <= 4) {
                     $input.val(function(i, oldval) {
                         return ++oldval;
                     });
@@ -121,7 +122,7 @@ $(document).ready(function(e) {
                 let obj = JSON.parse(result);
                 let item_price = obj[0]['item_price'];
 
-                if ($input.val() > 1 && $input.val() <= 10) {
+                if ($input.val() > 1 && $input.val() <= 5) {
                     $input.val(function(i, oldval) {
                         return --oldval;
                     });

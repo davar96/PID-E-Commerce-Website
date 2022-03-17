@@ -13,13 +13,13 @@
  
  <!-- Top sale start -->
  <section id="top-sale">
-            <div class="container py-5">
+            <div class="container">
                 <h4 class="font-rubik font-size-20">Les plus vendus</h4>
                 <hr>
                 <!-- OwlCarousel start -->
                 <div class="owl-carousel owl-theme">
                     <?php foreach($product_shuffle as $item) {?>
-                    <div class="item py-2">
+                    <div class="item py-2 bg-light">
                         <div class="product font-rale">
                             <a href="<?php printf('%s?item_id=%s', 'product.php', $item['item_id']); ?>"><img src="<?php echo $item['item_image']??"/assets/imageNotFound.jpg";?>" alt="image4" class="img-fluid"></a>
                             <div class="text-center">
@@ -45,15 +45,12 @@
                                     } else {
                                         echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-12">Ajouter au panier</button>';
                                     }
-                                    
                                     ?>
-                              
                                 </form>
                             </div>
                         </div>
                     </div>
                     <?php } //closing foreach function ?>      
-
                 </div>
                 <!-- OwlCarousel end -->
             </div>

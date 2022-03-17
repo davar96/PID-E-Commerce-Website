@@ -125,3 +125,16 @@ button:focus {
     outline: none;
     box-shadow: none;
 }
+
+.owl-carousel.item.product img {
+    transition: transform .5s ease;
+}
+
+.owl-carousel.item.product img:hover {
+    transform: scale(1.1);
+}
+
+#special-price {
+    margin-right: 1.2rem;
+    margin-top: 1rem;
+}
