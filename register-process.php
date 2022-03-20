@@ -61,11 +61,16 @@ if(empty($error)){
 
         header('Location:login.php');
     }else{
-        print "record failed to insert";
+        print "erreur";
     }
 
     }else{
-        echo 'not validate';
+        echo 'Veuillez entrer votre nom ET votre prenom';
     }
+
+    // $mailCheck = mysqli_query("SELECT * FROM user WHERE email = '$email'");
+    // if(mysqli_num_rows($mailCheck)>0){
+    //     echo'Email existe';
+    // }
 
 ?>

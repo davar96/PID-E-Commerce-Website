@@ -1,6 +1,6 @@
 <?php
 // Fetching product data
-class product{
+class Product{
     public $db=null;
 
     public function __construct(DBController $db){
