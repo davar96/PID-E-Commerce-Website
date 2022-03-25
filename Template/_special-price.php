@@ -10,7 +10,30 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_POST['special_price_submit'])){
             // call method addToCart
-        $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
+            if(isset($_SESSION) && isset($_SESSION['user_id'])){
+                $Cart->addToCart($_SESSION['user_id'], $_POST['item_id']);            
+            }else{
+
+                if(!isset($_SESSION['cart'])){
+                    $_SESSION['cart'] = array();
+                }
+                if(!empty($_SESSION['cart'])){
+                    $added = false;
+                    foreach ($_SESSION['cart'] as $key => $cart) {
+                        if($cart['item_id'] == $_POST['item_id']){
+                            $_SESSION['cart'][$key]['qty'] +=1;
+                            $added = true;
+                        }
+                    }
+                    if (!$added) {
+                        array_push($_SESSION['cart'] , array('item_id'=>$_POST['item_id'],'qty'=>1));
+                    }
+                }else{
+                    array_push($_SESSION['cart'] , array('item_id'=>$_POST['item_id'],'qty'=>1));
+                }
+                
+                
+            }
         }
     }
 

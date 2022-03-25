@@ -2,6 +2,9 @@
     // Require MySql Connection
     require('database/DBController.php');
 
+    // Require MySql Connection
+    require('database/RegisterDBController.php');
+
     // Require Product class
     require('database/Product.php');
 

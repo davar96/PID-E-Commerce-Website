@@ -17,7 +17,13 @@
                 <div class="row">
                     <div class="col-sm-9">
                         <?php 
-                            foreach($product->getData('wishlist') as $item) :
+                            if(isset($_SESSION['user_id'])){
+                                $wishlist = $product->getWishlistData($_SESSION['user_id']);
+                            }else{
+                                $wishlist = $_SESSION['wishlist'];
+
+                            }
+                            foreach($wishlist as $item) :
                             // print_r ($item);
                             $cart = $product->getProduct($item ['item_id']);
                             //  print_r($cart);

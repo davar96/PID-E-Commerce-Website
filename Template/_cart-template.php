@@ -17,8 +17,14 @@
                 <!-- Shopping cart items start -->
                 <div class="row">
                     <div class="col-sm-9">
-                        <?php 
-                            foreach($product->getData('cart') as $item) :
+                        <?php
+                        if(isset($_SESSION['user_id'])){
+                            $cart_data = $Cart->getCartData($_SESSION['user_id']);
+                        }else{
+                            $cart_data = $_SESSION['cart'];
+
+                        }
+                        foreach($cart_data as $item) :
                             // print_r ($item);
                             $cart = $product->getProduct($item ['item_id']);
                             //  print_r($cart);

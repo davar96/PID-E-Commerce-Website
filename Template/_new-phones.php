@@ -5,7 +5,30 @@
      if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_POST['new_phones_submit'])){
             // call method addToCart
-        $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
+            if(isset($_SESSION) && isset($_SESSION['user_id'])){
+                $Cart->addToCart($_SESSION['user_id'], $_POST['item_id']);            
+            }else{
+
+                if(!isset($_SESSION['cart'])){
+                    $_SESSION['cart'] = array();
+                }
+                if(!empty($_SESSION['cart'])){
+                    $added = false;
+                    foreach ($_SESSION['cart'] as $key => $cart) {
+                        if($cart['item_id'] == $_POST['item_id']){
+                            $_SESSION['cart'][$key]['qty'] +=1;
+                            $added = true;
+                        }
+                    }
+                    if (!$added) {
+                        array_push($_SESSION['cart'] , array('item_id'=>$_POST['item_id'],'qty'=>1));
+                    }
+                }else{
+                    array_push($_SESSION['cart'] , array('item_id'=>$_POST['item_id'],'qty'=>1));
+                }
+                
+                
+            }
         }
     }
  ?>
@@ -37,9 +60,14 @@
 
                                 <form method="post">
                                     <input type="hidden" name="item_id" value="<?php echo $item['item_id']?? '1';?>">
-                                    <input type="hidden" name="user_id" value="<?php echo 1;?>">
-                                    <?php 
-                                    if (in_array($item['item_id'], ($Cart->getCartId($product->getData('cart')) ?? []))) {
+                                     <?php
+                                     if(isset($_SESSION['user_id'])){
+                                        $cart_array = $Cart->getCartData($_SESSION['user_id']);
+                                     }else{
+                                        $cart_array = $_SESSION['cart'] ?? array();
+                                     }
+                                    
+                                    if (in_array($item['item_id'], ($Cart->getCartId($cart_array) ?? []))) {
                                         echo '<button type="submit" disabled class="btn btn-success font-size-12">Dans le panier</button>';
                                     } else {
                                         echo '<button type="submit" name="new_phones_submit" class="btn btn-warning font-size-12">Ajouter au panier</button>';

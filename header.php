@@ -35,7 +35,11 @@
         <div class="strip d-flex justify-content-between px-4 py-1 bg-light">
             <p class="font-rale font-size-12 text-black-50 m-0"><?php echo isset($user['first_name']) ? $user['first_name']: ''; ?></p>
             <div class="font-rale font-size-14">
+                <?php if(isset($_SESSION) && isset($_SESSION['user_id'])) { ?>
+                <a href="logout.php" class="px-3 border-right border-left text-dark">Déconnexion</a>
+                <?php }else{ ?>      
                 <a href="login.php" class="px-3 border-right border-left text-dark">Connexion</a>
+                <?php } ?>
             </div>
         </div>
 
@@ -70,7 +74,11 @@
                     <form action="#" class="font-size-14 font-rale">
                         <a href="cart.php" class="py-2 rounded-pill color-primary-bg">
                             <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
-                            <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product->getData('cart')); ?></span>
+                            <?php if(isset($_SESSION['user_id'])){ ?>
+                            <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($Cart->getCartData($_SESSION['user_id'])); ?></span>
+                           <?php }else{ ?>
+                            <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($_SESSION['cart'] ?? array()); ?></span>
+                           <?php } ?>
                         </a>
                     </form>
 

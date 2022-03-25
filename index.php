@@ -1,7 +1,9 @@
 <?php
+session_start();
 ob_start();
     // Include header file
     include('header.php');
+
 ?>
        
 <?php

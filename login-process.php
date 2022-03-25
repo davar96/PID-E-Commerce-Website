@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 $error = array();
 
 $email = validate_input_email($_POST['email']);
@@ -31,7 +31,14 @@ if(empty($error)){
     if(!empty($row)){
         //verify password
         if(password_verify($password, $row['password'])){
-            header("location: payement.php");
+            $_SESSION['user_id'] = $row['user_id'];
+            require_once 'functions.php';
+            if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])){
+                foreach ($_SESSION['cart'] as $key => $cart_item) {
+                    $Cart->addToCart($_SESSION['user_id'], $cart_item['item_id']); 
+                }
+            }
+            header("location: cart.php");
             exit();
         }
     }

@@ -32,7 +32,6 @@
 
 <?php 
     $user =array();
-    require('database/RegisterDBController.php');
 
     if(isset($_SESSION['user_id'])){
         $user = get_user_info($con, $_SESSION['user_id']);

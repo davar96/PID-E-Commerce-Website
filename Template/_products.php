@@ -1,5 +1,5 @@
   <!-- Product start -->
-<?php 
+  <?php 
     $item_id = $_GET['item_id'] ?? 'Erreur';
     foreach($product->getData() as $item):
         if ($item['item_id'] == $item_id):

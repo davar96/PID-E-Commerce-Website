@@ -27,26 +27,52 @@ class Cart{
             }
         }
     }
+    public function getCartData($user_id){
+
+        $result = $this->db->con->query("SELECT * FROM cart JOIN product on cart.item_id=product.item_id WHERE cart.user_id=$user_id");
+
+        $resultArray = array();
+
+        // fetch product data one by one
+        while ($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+        return $resultArray;
+    }
 
     // get user_id and item_id, insert into cart table
     public function addToCart($userid, $itemid){
         if(isset($userid) && isset($itemid)){
-            $params = array('user_id' => $userid, 'item_id' => $itemid);
-
-
-            // insert data into cart
-            $result = $this->insertIntoCart($params);
-            if ($result) {
-                // reload page
-                header("Location:" . $_SERVER['PHP_SELF']);
+            $result = $this->db->con->query("SELECT * FROM cart WHERE user_id=$userid AND item_id=$itemid");
+            if(mysqli_num_rows($result)==1){
+                $item = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $old_qty = $item['qty'];
+                $qty = $old_qty + 1;
+                $params = array('user_id' => $userid, 'item_id' => $itemid ,'qty'=>$qty);
+                // insert data into cart
+                $result = $this->insertIntoCart($params);
+                if ($result) {
+                    // reload page
+                    header("Location:" . $_SERVER['PHP_SELF']);
+                }
+            }else{
+                $params = array('user_id' => $userid, 'item_id' => $itemid ,'qty'=>1);
+                // insert data into cart
+                $result = $this->insertIntoCart($params);
+                if ($result) {
+                    // reload page
+                    header("Location:" . $_SERVER['PHP_SELF']);
+                }
             }
         }
     }
 
     // delete cart item using cart item id
     public function deleteCart($item_id = null, $table = 'cart'){
-        if($item_id != null){
-            $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id = {$item_id}");
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+        if($item_id != null && $user_id!=0){
+
+            $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id = {$item_id} AND user_id={$user_id}");
             if($result){
                 header("Location:" . $_SERVER['PHP_SELF']);
             }
@@ -78,16 +104,32 @@ class Cart{
 
     // Save for later
     public function sendToWishlist($item_id = null, $saveTable = "wishlist", $fromTable = "cart"){
-        if($item_id != null){
-            $query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id = {$item_id};";
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+        if($item_id != null && $user_id!=0){
+            $result = $this->db->con->query("SELECT * FROM cart WHERE user_id=$user_id AND item_id=$item_id");
+            if(mysqli_num_rows($result)==1){
+                $item = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $params = array('user_id' => $user_id, 'item_id' => $item_id );
+                // insert data into cart
+                $result = $this->insertIntoCart($params,'wishlist');
+                $cart_id = $item['cart_id'];
+                $query = "DELETE FROM cart WHERE cart_id = {$cart_id};";
+                $result = $this->db->con->query($query);
+                if($result){
+                    header("Location:".$_SERVER['PHP_SELF']);
+                }
+                return $result;
+            }
+            /*$query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id = {$item_id};";
             $query .= "DELETE FROM {$fromTable} WHERE item_id = {$item_id};";
 
             //execute multiple queries
+            
             $result = $this->db->con->multi_query($query);
             if($result){
                 header("Location:".$_SERVER['PHP_SELF']);
             }
-            return $result;
+            return $result;*/
 
         }
     }

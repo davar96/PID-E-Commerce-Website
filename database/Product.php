@@ -36,6 +36,15 @@ class Product{
         return $resultArray;
         }
     }
+    public function getWishlistData($user_id){
+        $result = $this->db->con->query("SELECT * FROM wishlist WHERE user_id=$user_id");
+        $resultArray = array();
+        // fetch product data one by one
+        while ($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+        return $resultArray;
+    }
 }
 
 ?>
