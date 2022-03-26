@@ -42,7 +42,6 @@ if(empty($error)){
             exit();
         }
     }
-    
 }else{
     echo "Introduisez votre email et MDP pour vous authentifier !";
 }

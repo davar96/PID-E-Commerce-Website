@@ -24,7 +24,7 @@
                         $cart_data = $_SESSION['cart'];
                     }
                     foreach ($cart_data as $item) :
-                        //$produit = $product->getProduct($item['item_id']);
+                        
                         $produit = $Cart->getUserCartProduct($_SESSION['user_id'], $item['item_id']);
 
                         $subTotal[] = array_map(function ($objet) {

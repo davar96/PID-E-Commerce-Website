@@ -3,7 +3,6 @@ session_start();
 ob_start();
     // Include header file
     include('header.php');
-
 ?>
        
 <?php
@@ -24,7 +23,6 @@ ob_start();
 
      // Include news file
      include('Template/_news.php');
-     
 ?>
 
 <?php

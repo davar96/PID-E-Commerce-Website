@@ -20,9 +20,7 @@
         }
         return'';
     }
-
   
-    
     //profileImage
     function upload_profile($path, $file){
         $targetDir = $path;
@@ -63,7 +61,6 @@
     
         $row = mysqli_fetch_array($result);
         return empty($row)?false:$row;
-      
     }
 
     ?>

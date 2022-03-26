@@ -22,12 +22,10 @@
     <link rel="stylesheet" href="style.css">
 
     <?php
-
     session_start();
     // Require Functions.php file
     require('functions.php');
     ?>
-    
 </head>
 
 <?php 

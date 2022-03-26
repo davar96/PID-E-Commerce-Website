@@ -26,12 +26,9 @@
                 }else{
                     array_push($_SESSION['cart'] , array('item_id'=>$_POST['item_id'],'qty'=>1));
                 }
-                
-                
             }
         }
     }
-
  ?>
  
  <!-- Top sale start -->

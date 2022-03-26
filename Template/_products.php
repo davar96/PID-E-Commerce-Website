@@ -4,7 +4,6 @@
     foreach($product->getData() as $item):
         if ($item['item_id'] == $item_id):
 ?>
-
   <section id="product" class="py-3">
             <div class="container">
                 <div class="row">
@@ -21,7 +20,6 @@
                                     }
                                     
                                     ?>
-                      
                             </div>
                         </div>
                     </div>

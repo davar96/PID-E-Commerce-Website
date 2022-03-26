@@ -26,8 +26,6 @@
                 }else{
                     array_push($_SESSION['cart'] , array('item_id'=>$_POST['item_id'],'qty'=>1));
                 }
-                
-                
             }
         }
     }
@@ -72,7 +70,6 @@
                                     } else {
                                         echo '<button type="submit" name="new_phones_submit" class="btn btn-warning font-size-12">Ajouter au panier</button>';
                                     }
-                                    
                                     ?>
                                 </form>
                             </div>

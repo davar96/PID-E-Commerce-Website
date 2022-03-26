@@ -3,11 +3,9 @@
             <div class="container py-4">
                 <h4 class="font-rubik font-size-20">Les actualités</h4>
                 <hr>
-
                 <!-- start sw-rss-feed code --> 
                 <div class="container py-4 justify-content-center fluid">
                     <script type="text/javascript"> 
-                            
                             rssfeed_url = new Array(); 
                             rssfeed_url[0]="https://www.lesnumeriques.com/rss.xml";  
                             rssfeed_frame_width="1050"; 
@@ -44,12 +42,10 @@
                             rssfeed_item_description_tag="on"; 
                             rssfeed_no_items="0"; 
                             rssfeed_cache = "3b7d44fc61d0950e24ae571fdf711c8c"; 
-                        
                         </script> 
                     <script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script> 
                 </div>
                 <!-- end sw-rss-feed code -->
-
             </div>
         </section>
         <!-- News end -->

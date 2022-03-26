@@ -75,7 +75,6 @@ $(document).ready(function(e) {
     let $qty_down = $(".qty .qty-down");
     let $deal_price = $("#deal-price");
 
-
     // Click on quantity up button
     $qty_up.click(function(e) {
 
@@ -114,7 +113,6 @@ $(document).ready(function(e) {
         let $input = $(`.qty_input[data-id='${$(this).data('id')}']`);
         let $price = $(`.product_price[data-id='${$(this).data('id')}']`);
 
-
         // change product price using ajax call
         $.ajax({
             url: "template/ajax.php",
@@ -135,13 +133,9 @@ $(document).ready(function(e) {
                     //set subTotal price
                     let subTotal = parseInt($deal_price.text()) - parseInt(item_price);
                     $deal_price.text(subTotal.toFixed(2));
-
-
                 }
             }
         }); //closing ajax request
-
-
     });
 
     //image uploading

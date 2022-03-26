@@ -13,13 +13,10 @@ class Cart{
         if($this->db->con != null){
             if($params != null){
                 $columns = implode(',', array_keys($params));
-                // print_r($columns);
                 $values = implode(',', array_values($params));
-                // print_r($values);
 
                 // create sql query
                 $query_string = sprintf("INSERT INTO %s (%s) VALUES (%s)", $table, $columns, $values);
-                // echo $query_string;
 
                 // Execute query
                 $result = $this->db->con->query($query_string);
@@ -28,9 +25,6 @@ class Cart{
         }
     }
     public function getCartData($user_id){
-        // SELECT p.*, c.qty FROM cart c INNER JOIN product p on c.item_id=p.item_id WHERE c.user_id=22
-        //$result = $this->db->con->query("SELECT p.*, c.qty FROM cart c INNER JOIN product p on c.item_id=p.item_id WHERE c.user_id=$user_id");
-        
         $result = $this->db->con->query("SELECT * FROM cart JOIN product on cart.item_id=product.item_id WHERE cart.user_id=$user_id");
 
         $resultArray = array();

@@ -25,25 +25,19 @@
     // Require Functions.php file
     require('functions.php');
     ?>
-
-
-    
 </head>
 
 <body>
-
- 
     <nav class="navbar navbar-expand-lg color-second-bg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">PID-E-Commerce-Website</a>
         </div>
     </nav>
-        
+
 <?php 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         require('register-process.php');
     }
-
 ?>
   <!-- Main start -->
   <main class="main-site">
