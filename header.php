@@ -18,7 +18,7 @@
     <!-- FontAwesome  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <!-- Custom CSS File -->
     <link rel="stylesheet" href="style.css">
 
@@ -33,7 +33,7 @@
     <!-- Header start -->
     <header id="header">
         <div class="strip d-flex justify-content-between px-4 py-1 bg-light">
-            <p class="font-rale font-size-12 text-black-50 m-0"><?php echo isset($user['first_name']) ? $user['first_name']: ''; ?></p>
+            <p class="font-rale font-size-14 text-black m-0"><?php echo get_current_user(); ?></p>
             <div class="font-rale font-size-14">
                 <?php if(isset($_SESSION) && isset($_SESSION['user_id'])) { ?>
                 <a href="logout.php" class="px-3 border-right border-left text-dark">Déconnexion</a>

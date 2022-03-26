@@ -2,11 +2,11 @@
  <?php 
  if($_SERVER['REQUEST_METHOD']=='POST'){
      if(isset($_POST['delete-cart-submit'])){
-       $deletedRecord = $Cart->deleteCart($_POST['item_id']);
+       $deletedRecord = $Cart->deleteWishlist($_POST['item_id']);
      }
 
      if(isset($_POST['cart-submit'])){
-         $Cart->sendToWishlist($_POST['item_id'], 'cart', 'wishlist');
+         $Cart->sendToCart($_POST['item_id'], 'wishlist', 'cart');
      }
  }
  ?>

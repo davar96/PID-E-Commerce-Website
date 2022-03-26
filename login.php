@@ -43,6 +43,12 @@
 ?>
 
 <body>
+
+<nav class="navbar navbar-expand-lg color-second-bg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">PID-E-Commerce-Website</a>
+        </div>
+    </nav>
   <!-- Main start -->
   <main class="main-site">
 

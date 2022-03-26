@@ -24,6 +24,9 @@ class Product{
     // get product using item id
     public function getProduct($item_id = null, $table = 'product'){
         if(isset($item_id)){
+            // SELECT p.*, c.qty FROM cart c INNER JOIN product p ON c.item_id = p.item_id WHERE c.item_id = {$item_id} AND c.cart_id = 94
+            // $result = $this->db->con->query("SELECT p.*, c.qty FROM cart c INNER JOIN product p ON c.item_id = p.item_id WHERE c.item_id = {$item_id} AND c.cart_id = 94");
+            
             $result = $this->db->con->query("SELECT * FROM {$table} WHERE item_id = {$item_id}");
             
             $resultArray = array();

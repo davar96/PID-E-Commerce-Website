@@ -28,7 +28,9 @@ class Cart{
         }
     }
     public function getCartData($user_id){
-
+        // SELECT p.*, c.qty FROM cart c INNER JOIN product p on c.item_id=p.item_id WHERE c.user_id=22
+        //$result = $this->db->con->query("SELECT p.*, c.qty FROM cart c INNER JOIN product p on c.item_id=p.item_id WHERE c.user_id=$user_id");
+        
         $result = $this->db->con->query("SELECT * FROM cart JOIN product on cart.item_id=product.item_id WHERE cart.user_id=$user_id");
 
         $resultArray = array();
@@ -38,6 +40,21 @@ class Cart{
             $resultArray[] = $item;
         }
         return $resultArray;
+    }
+
+    public function getUserCartProduct($user_id, $item_id) {
+        if(isset($item_id)){
+            $result = $this->db->con->query("SELECT p.*, c.qty FROM cart c INNER JOIN product p on c.item_id=p.item_id WHERE c.user_id=$user_id AND c.item_id = $item_id");
+            
+            $resultArray = array();
+
+        // fetch product data one by one
+        while ($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+
+        return $resultArray;
+        }
     }
 
     // get user_id and item_id, insert into cart table
@@ -69,6 +86,19 @@ class Cart{
 
     // delete cart item using cart item id
     public function deleteCart($item_id = null, $table = 'cart'){
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+        if($item_id != null && $user_id!=0){
+
+            $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id = {$item_id} AND user_id={$user_id}");
+            if($result){
+                header("Location:" . $_SERVER['PHP_SELF']);
+            }
+            return $result;
+        }
+    }
+
+     // delete wishlist item using wishlist item id
+     public function deleteWishlist($item_id = null, $table = 'wishlist'){
         $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
         if($item_id != null && $user_id!=0){
 
@@ -120,17 +150,27 @@ class Cart{
                 }
                 return $result;
             }
-            /*$query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id = {$item_id};";
-            $query .= "DELETE FROM {$fromTable} WHERE item_id = {$item_id};";
+        }
+    }
 
-            //execute multiple queries
-            
-            $result = $this->db->con->multi_query($query);
-            if($result){
-                header("Location:".$_SERVER['PHP_SELF']);
+    // Save for later
+    public function sendToCart($item_id = null, $saveTable = "cart", $fromTable = "wishlist"){
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+        if($item_id != null && $user_id!=0){
+            $result = $this->db->con->query("SELECT * FROM wishlist WHERE user_id=$user_id AND item_id=$item_id");
+            if(mysqli_num_rows($result)==1){
+                $item = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $params = array('user_id' => $user_id, 'item_id' => $item_id );
+                // insert data into cart
+                $result = $this->insertIntoCart($params,'cart');
+                $id_wishlist = $item['id_wishlist'];
+                $query = "DELETE FROM wishlist WHERE id_wishlist = {$id_wishlist};";
+                $result = $this->db->con->query($query);
+                if($result){
+                    header("Location:".$_SERVER['PHP_SELF']);
+                }
+                return $result;
             }
-            return $result;*/
-
         }
     }
 

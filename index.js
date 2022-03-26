@@ -93,6 +93,8 @@ $(document).ready(function(e) {
 
                 if ($input.val() >= 1 && $input.val() <= 4) {
                     $input.val(function(i, oldval) {
+
+
                         return ++oldval;
                     });
 

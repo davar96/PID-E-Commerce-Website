@@ -24,5 +24,9 @@
     // cart object
     $Cart = new Cart($db);
 
-    
+    function Debuggage($data) { 
+        echo '<pre>';
+        var_dump($data);
+        echo '</pre>';
+    }
 ?>
